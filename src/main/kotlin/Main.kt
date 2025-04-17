@@ -8,11 +8,13 @@ import org.koin.ktor.plugin.Koin
 import org.koin.logger.slf4jLogger
 import io.ktor.server.plugins.contentnegotiation.*
 import io.ktor.server.routing.*
+import org.example.di.module
 
 fun main() {
     embeddedServer(Netty, port = 8080) {
         install(Koin) {
             slf4jLogger()
+            modules(module)
         }
         configureSerialization()
         configureRouting()
